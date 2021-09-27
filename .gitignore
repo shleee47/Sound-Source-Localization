@@ -1,0 +1,8 @@
+*.zip
+*.idea
+__pycache__/
+*.pt
+*.swp
+*.log
+./out_train
+*.wav
