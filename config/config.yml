@@ -1,0 +1,80 @@
+use_tb_logger: true
+
+#### datasets
+datasets:
+  #path: /home/nas/DB/AI_grand_challenge_2020/NewSoundproof/cutted/
+  #path2: /home/nas/DB/AI_grand_challenge_2020/Soundproof/cutted/
+  csv: /home/sanghoon/SSL/dataset/dataset.csv
+  test: /home/sanghoon/SSL/test_dataset/ 
+
+dataloader:
+  train:
+    batch_size: 32
+    shuffle: true
+    # pin_memeory: true
+    #num_workers: 20
+    num_workers: 20
+
+  valid:
+    batch_size: 32
+    shuffle: true
+    # pin_memeory: true
+    num_workers: 20
+
+  test:
+    batch_size: 1
+    shuffle: false
+    # pin_memeory: true
+    num_workers: 0
+
+#### network structures
+MYNET:
+  embed_size: 8
+  sequence_size: 16 # Temporal duration of input clips
+  encoder: resnet50
+  n_classes: 2
+  input_size: 224
+  pretrained: true
+  num_layers: 1
+  bidirectional: false
+
+#### training settings: learning rate scheme, loss
+trainer:
+  epochs: 10000
+  device: 1
+  #save_path: /home/nas/user/minseok/JUNGMIN_DEEPER
+  save_path: /home/nas/user/ygchoi/tb/
+  #ckpt_path: /home/nas/user/sanghoon/code/NOAS/final_5sec_proof_noGCC_CRNN_plateau_novad_TxF_drop3_fc2_zero_512/12December_0926/ckpt/3_75.6014.pt
+  #ckpt_path: /home/nas/user/sanghoon/code/NOAS/final_scra5sec_proof_GCC_CRNN_plateau_novad_TxF_drop3_fc2_zero_512/
+  comment: no comment
+
+tester:
+  ckpt_path: /home/nas/user/ygchoi/tb/13May_0937/ckpt/9_96.6000.pt
+  device: 2 
+
+
+criterion:
+  #name: regression
+  #name: BCEWithLogits
+  name: BCE
+
+#### Optimizer settings
+# optimizer:
+#   name: Adam   ### Adam, RMSprop, SGD
+#   lr: !!float 1e-3
+#   weight_decay: 0
+#   eps: !!float 1e-3
+optimizer:
+  name: Adam   ## Adam, RMSprop, SGD
+  lr: !!float 0.0001
+  # betas: (0.9, 0.999)
+  eps: !!float 1e-5
+  weight_decay: !!float 1e-3
+
+
+#### scheduler settings
+scheduler:
+  name: plateau
+  min_lr: !!float 1e-8
+  patience: 2
+  factor: 0.5
