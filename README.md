@@ -28,6 +28,7 @@ sh test.sh
 
 ## Proposed Network
 We made cross-modal transformer model like below.
+
 ![image](https://user-images.githubusercontent.com/57610448/131611710-7f73ae42-edcb-4356-b238-f3eb3147d2d4.png)
 
    
