@@ -51,7 +51,7 @@ def test(config):
     tester.test()
 
 if __name__ == '__main__':
-    os.environ["CUDA_VISIBLE_DEVICES"]="1"
+    os.environ["CUDA_VISIBLE_DEVICES"]="0"
     parser = argparse.ArgumentParser()
     parser.add_argument('-b', '--base_dir', type=str, default='.', help='Root directory')
     parser.add_argument('-c', '--config', type=str, help='Path to option YAML file.')

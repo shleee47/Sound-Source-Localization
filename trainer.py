@@ -51,7 +51,6 @@ class ModelTrainer:
         self.logger.addHandler(sh)
         
         #Dump hyper-parameters
-        # config_info = {'optim':str(self.optimizer), 'scheduler':str(self.scheduler), 'criterion':str(self.criterion)}
         with open(str(self.exp_path.joinpath('config.json')), 'w') as f:
             json.dump(config, f, indent=2)
 
@@ -68,7 +67,6 @@ class ModelTrainer:
             self.optimizer.param_groups[0]['lr'] = 0.0001
 
     def train(self):
-        #pdb.set_trace() 
         for epoch in tqdm(range(self.epochs)):
             start = time.time()
             train_loss, t_accuracy= self.train_single_epoch(epoch)
@@ -104,25 +102,20 @@ class ModelTrainer:
 
         for b, batch in (enumerate(self.train_loader)):
 
-            #pdb.set_trace()
             inputs, labels = batch
-            #inputs = torch.unsqueeze(inputs,1)
             B, C, T, Freq = inputs.size()
             inputs = inputs.cuda()
             labels = labels.cuda()
-            batch_loss = 0.0
 
             self.optimizer.zero_grad()
             outputs = self.model(inputs)
             scores = outputs.mean(1)
             best_prediction = scores.max(-1)[1]
 
-            #pdb.set_trace()
             for i in range(B):
                 if labels[i, best_prediction[i]] == 1.0:
                     correct_cnt += 1
             
-            #print("scores {}\nlabel {}".format(scores[0],labels[0]))
             batch_loss = self.criterion(scores, labels)
             batch_loss.backward()
             total_loss += batch_loss.item()
@@ -147,7 +140,6 @@ class ModelTrainer:
             for b, batch in enumerate(self.valid_loader):
 
                 inputs, labels = batch
-                #inputs = torch.unsqueeze(inputs,1)
                 B, C, T, Freq = inputs.size()  
                 inputs = inputs.cuda()
                 labels = labels.cuda()
@@ -162,7 +154,6 @@ class ModelTrainer:
 
                 batch_loss = self.criterion(scores, labels)
                 total_loss += batch_loss.item()
-
                 tot_cnt += B
 
                 print("{}/{}: {}/{}".format(b, batch_size, correct_cnt, tot_cnt), end='\r')
@@ -177,9 +168,6 @@ class ModelTrainer:
         checkpoint = torch.load(ckpt)
         self.model.load_state_dict(checkpoint['model_state_dict'], strict=False)
         self.optimizer.load_state_dict(checkpoint['optimizer'])#, strict=False)
-        
-        # self.model.load_state_dict(checkpoint['model_state_dict'], strict=False)
-
 
 
     def save_checkpoint(self, epoch, vacc, best=True):
@@ -239,7 +227,6 @@ class ModelTester:
                 B, C, T, Freq = inputs.size()  
                 inputs = inputs.cuda()
                 outputs = self.model(inputs)
-                #pdb.set_trace()
                 best_prediction = outputs.max(2)[1].mode()[0]
                 final.write(audio_path[0]+'\t'+result[best_prediction.item()]+'\n')
         

@@ -43,7 +43,7 @@ trainer:
   epochs: 10000
   device: 1
   #save_path: /home/nas/user/minseok/JUNGMIN_DEEPER
-  save_path: /home/nas/user/ygchoi/tb/
+  save_path: /home/nas/user/sanghoon/SSL/tb/
   #ckpt_path: /home/nas/user/sanghoon/code/NOAS/final_5sec_proof_noGCC_CRNN_plateau_novad_TxF_drop3_fc2_zero_512/12December_0926/ckpt/3_75.6014.pt
   #ckpt_path: /home/nas/user/sanghoon/code/NOAS/final_scra5sec_proof_GCC_CRNN_plateau_novad_TxF_drop3_fc2_zero_512/
   comment: no comment
