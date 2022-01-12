@@ -19,11 +19,4 @@ sh train.sh
 ```
 cd Sound-Source-Localization/
 sh test.sh
-```                   
-            
-## Experiments
-### The results of the experiment are summarized in the link below.   
-
-
-
-## Proposed Network
+```       
