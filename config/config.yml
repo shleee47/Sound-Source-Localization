@@ -2,10 +2,9 @@ use_tb_logger: true
 
 #### datasets
 datasets:
-  #path: /home/nas/DB/AI_grand_challenge_2020/NewSoundproof/cutted/
-  #path2: /home/nas/DB/AI_grand_challenge_2020/Soundproof/cutted/
-  csv: /home/sanghoon/SSL/dataset/dataset.csv
-  test: /home/sanghoon/SSL/test_dataset/ 
+
+  csv: ./dataset/dataset.csv
+  test: ./test_dataset/ 
 
 dataloader:
   train:
@@ -42,14 +41,12 @@ MYNET:
 trainer:
   epochs: 10000
   device: 1
-  #save_path: /home/nas/user/minseok/JUNGMIN_DEEPER
   save_path: /home/nas/user/sanghoon/SSL/tb/
-  #ckpt_path: /home/nas/user/sanghoon/code/NOAS/final_5sec_proof_noGCC_CRNN_plateau_novad_TxF_drop3_fc2_zero_512/12December_0926/ckpt/3_75.6014.pt
-  #ckpt_path: /home/nas/user/sanghoon/code/NOAS/final_scra5sec_proof_GCC_CRNN_plateau_novad_TxF_drop3_fc2_zero_512/
+  #ckpt_path: /home/nas/user/sanghoon/SSL/tb/12December_0926/ckpt/3_75.6014.pt
   comment: no comment
 
 tester:
-  ckpt_path: /home/nas/user/ygchoi/tb/13May_0937/ckpt/9_96.6000.pt
+  ckpt_path: /home/nas/user/sanghoon/SSL/tb/12December_0926/ckpt/3_75.6014.pt
   device: 2 
 
 
