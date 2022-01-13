@@ -1,5 +1,5 @@
-conda create -y -n vamos python=3.8
-conda activate vamos
+conda create -y -n varco python=3.8
+conda activate varco
 
 ####select according to your conda version####
 ####https://pytorch.org/####
