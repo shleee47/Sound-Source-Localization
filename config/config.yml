@@ -41,7 +41,7 @@ MYNET:
 trainer:
   epochs: 10000
   device: 1
-  save_path: '''PATH WHRE THE MODEL WILL BE SAVED'''
+  save_path: '''PATH WHERE THE MODEL WILL BE SAVED'''
   #ckpt_path: '''PATH OF THE MODEL TO BE LOADED'''
   comment: no comment
 
