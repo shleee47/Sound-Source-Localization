@@ -41,12 +41,12 @@ MYNET:
 trainer:
   epochs: 10000
   device: 1
-  save_path: /home/nas/user/sanghoon/SSL/tb/
-  #ckpt_path: /home/nas/user/sanghoon/SSL/tb/12December_0926/ckpt/3_75.6014.pt
+  save_path: '''PATH WHRE THE MODEL WILL BE SAVED'''
+  #ckpt_path: '''PATH OF THE MODEL TO BE LOADED'''
   comment: no comment
 
 tester:
-  ckpt_path: /home/nas/user/sanghoon/SSL/tb/12December_0926/ckpt/3_75.6014.pt
+  ckpt_path: '''PATH OF THE MODEL TO BE LOADED'''
   device: 2 
 
 
